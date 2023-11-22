@@ -3,24 +3,13 @@ import { useEffect, useState } from "react";
 import TextFieldOutline from "../text-fields/text-field-outline";
 
 export default function BasicCard(props: any) {
-    const [isFocused, setIsFocused] = useState(false);
     const [name, setName] = useState(props.name);
     const [email, setEmail] = useState(props.email);
     const [phone, setPhone] = useState(props.phone);
 
-    /* useEffect(() => {
-        setName(props.name);
-        setEmail(props.email);
-        setPhone(props.phone);
-    }); */
-   /*  const handleFocus = () => {
-        setIsFocused(true);
-        props.onFocusChange({ name, email, phone, focus: true });
-    }; */
 
     const handleBlur = () => {
-        setIsFocused(false);
-        props.onFocusChange({ name, email, phone, focus: false});
+        props.onFocusChange({ name, email, phone, focus: false });
     };
 
     const handleChangeName = (event: any) => {
@@ -34,7 +23,7 @@ export default function BasicCard(props: any) {
     };
 
     return (
-        <Card sx={{ width: 275, height: 160 }} className="customCard" tabIndex={0}
+        <Card sx={{ width: 285, height: 160 }} className="customCard" tabIndex={0}
             onBlur={handleBlur} key={props.id}>
             <CardContent>
                 <Typography component={'div'} sx={{ fontSize: 20 }} color="text.primary" gutterBottom>
@@ -47,7 +36,11 @@ export default function BasicCard(props: any) {
                     </span>
                 </Typography>
                 <Typography component={'div'} variant="body2">
-                    <small> Phone: </small> <TextFieldOutline value={phone} onChange={handleChangePhone} config={{ width: '24ch', }} />
+                    <small> Phone: </small>
+                    <TextFieldOutline
+                        value={phone}
+                        onChange={handleChangePhone}
+                        config={{ width: '24ch', }} />
                 </Typography>
             </CardContent>
 
