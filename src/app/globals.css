@@ -17,11 +17,23 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  padding: 5rem;
 }
+
+.container-card {
+  display: grid;
+  grid-auto-rows: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 7rem;
+  place-items: center;
+
+}
+
+.customCard:focus-within {
+  border: 1px solid rgb(84, 234, 84);
+}
+
+
+/* .textField .MuiOutlinedInput-notchedOutline{
+  border: none !important;
+} */
