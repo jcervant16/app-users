@@ -22,7 +22,7 @@ body {
 
 .container-card {
   display: grid;
-  grid-auto-rows: 4rem;
+  grid-auto-rows: 6rem;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 7rem;
   place-items: center;
@@ -33,7 +33,9 @@ body {
   border: 1px solid rgb(84, 234, 84);
 }
 
-
-/* .textField .MuiOutlinedInput-notchedOutline{
-  border: none !important;
-} */
+.icon-save{
+  display: flex;
+  justify-content: flex-end;
+  bottom: 10px;
+  color: rgb(84, 234, 84);
+}

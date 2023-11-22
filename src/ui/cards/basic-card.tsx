@@ -1,15 +1,25 @@
-import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Card, CardActions, CardContent, IconButton, Typography } from "@mui/material";
+import { useState } from "react";
+import SaveIcon from '@mui/icons-material/Save';
 import TextFieldOutline from "../text-fields/text-field-outline";
 
+let cardIdSelected: number = 0;
+
 export default function BasicCard(props: any) {
+    const [isFocused, setIsFocused] = useState(false);
     const [name, setName] = useState(props.name);
     const [email, setEmail] = useState(props.email);
     const [phone, setPhone] = useState(props.phone);
 
 
-    const handleBlur = () => {
-        props.onFocusChange({ name, email, phone, focus: false });
+    const handleFocus = (id: number) => {
+        setIsFocused(true);
+        cardIdSelected = id;
+       
+    };
+
+    const handleBlur = (id: number) => {
+        setIsFocused(false);
     };
 
     const handleChangeName = (event: any) => {
@@ -23,8 +33,8 @@ export default function BasicCard(props: any) {
     };
 
     return (
-        <Card sx={{ width: 285, height: 160 }} className="customCard" tabIndex={0}
-            onBlur={handleBlur} key={props.id}>
+        <Card sx={{ width: 285, height: 200 }} className="customCard" tabIndex={0} onClick={() => { handleFocus(props.id) }}
+            onBlur={() => handleBlur(props.id)} key={props.id}>
             <CardContent>
                 <Typography component={'div'} sx={{ fontSize: 20 }} color="text.primary" gutterBottom>
                     <TextFieldOutline value={name} onChange={handleChangeName} />
@@ -36,13 +46,18 @@ export default function BasicCard(props: any) {
                     </span>
                 </Typography>
                 <Typography component={'div'} variant="body2">
-                    <small> Phone: </small>
-                    <TextFieldOutline
-                        value={phone}
-                        onChange={handleChangePhone}
-                        config={{ width: '24ch', }} />
+                    <small> Phone: </small> <TextFieldOutline value={phone} onChange={handleChangePhone} config={{ width: '24ch', }} />
                 </Typography>
+                <div className="icon-save">
+                    {
+                        isFocused &&
+                        <SaveIcon />
+
+                    }
+                </div>
             </CardContent>
+
+
 
         </Card>
     );
