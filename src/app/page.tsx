@@ -15,7 +15,6 @@ let users: User[] = [];
 const getUsers = async () => {
   const res = await fetch(url)
   const users = await res.json();
-  console.log(users)
   return users
 }
 const queryClient = new QueryClient()

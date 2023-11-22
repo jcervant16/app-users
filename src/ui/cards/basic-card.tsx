@@ -3,7 +3,6 @@ import { useState } from "react";
 import SaveIcon from '@mui/icons-material/Save';
 import TextFieldOutline from "../text-fields/text-field-outline";
 
-let cardIdSelected: number = 0;
 
 export default function BasicCard(props: any) {
     const [isFocused, setIsFocused] = useState(false);
@@ -14,7 +13,6 @@ export default function BasicCard(props: any) {
 
     const handleFocus = (id: number) => {
         setIsFocused(true);
-        cardIdSelected = id;
        
     };
 
