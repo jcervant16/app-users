@@ -37,5 +37,7 @@ body {
   display: flex;
   justify-content: flex-end;
   bottom: 10px;
+}
+.button-saved{
   color: rgb(84, 234, 84);
 }

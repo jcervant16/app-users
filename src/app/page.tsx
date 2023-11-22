@@ -8,16 +8,11 @@ import BasicCard from '@/ui/cards/basic-card';
 import { User } from '@/common/user.interface';
 import { Box, Button } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { createUser, getUsers, editUser } from '@/app/api/user'
 
-const url = "https://jsonplaceholder.typicode.com/users";
 let users: User[] = [];
 
-const getUsers = async () => {
-  const res = await fetch(url)
-  const users = await res.json();
-  return users
-}
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 export default function App() {
   return (
@@ -29,7 +24,7 @@ export default function App() {
 
 function ListUsers() {
   const [listUsers, setUserList] = useState(users);
-  const query = useQuery('users', getUsers, { enabled: true });
+  const query = useQuery('users', getUsers, { refetchOnWindowFocus: false });
   const data = query.data ?? [];
 
   useEffect(() => {
@@ -37,6 +32,9 @@ function ListUsers() {
   }, [query.data]);
 
   const handleCustomCardFocusChange = (user: any) => {
+    console.log(user);
+  };
+  const handleSave = (user: any) => {
     console.log(user);
   };
 
@@ -69,7 +67,9 @@ function ListUsers() {
             phone={item.phone}
             username={item.username}
             id={item.id}
-            onFocusChange={handleCustomCardFocusChange} />
+            onFocusChange={handleCustomCardFocusChange}
+            onSave={handleSave}
+          />
         ))}
       </div>
     </div>

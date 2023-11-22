@@ -1,4 +1,4 @@
-import { Card, CardActions, CardContent, IconButton, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, IconButton, Typography } from "@mui/material";
 import { useState } from "react";
 import SaveIcon from '@mui/icons-material/Save';
 import TextFieldOutline from "../text-fields/text-field-outline";
@@ -13,11 +13,15 @@ export default function BasicCard(props: any) {
 
     const handleFocus = (id: number) => {
         setIsFocused(true);
-       
     };
 
     const handleBlur = (id: number) => {
         setIsFocused(false);
+    };
+
+    const handleSaved = (event: any) => {
+        console.log(event)
+        props.onSave(event)
     };
 
     const handleChangeName = (event: any) => {
@@ -49,7 +53,9 @@ export default function BasicCard(props: any) {
                 <div className="icon-save">
                     {
                         isFocused &&
-                        <SaveIcon />
+                        <IconButton onClick={handleSaved} className="button-saved">
+                            <SaveIcon />
+                        </IconButton>
 
                     }
                 </div>
@@ -57,7 +63,7 @@ export default function BasicCard(props: any) {
 
 
 
-        </Card>
+        </Card >
     );
 }
 
