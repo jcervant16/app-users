@@ -3,6 +3,7 @@ import {
   useQuery,
   QueryClient,
   QueryClientProvider,
+  useMutation,
 } from 'react-query';
 import BasicCard from '@/ui/cards/basic-card';
 import { User } from '@/common/user.interface';
@@ -25,6 +26,7 @@ export default function App() {
 function ListUsers() {
   const [listUsers, setUserList] = useState(users);
   const query = useQuery('users', getUsers, { refetchOnWindowFocus: false });
+
   const data = query.data ?? [];
 
   useEffect(() => {
@@ -32,7 +34,7 @@ function ListUsers() {
   }, [query.data]);
 
   const handleCustomCardFocusChange = (user: any) => {
-    console.log(user);
+
   };
   const handleSave = (user: any) => {
     console.log(user);

@@ -50,15 +50,14 @@ export default function BasicCard(props: any) {
                 <Typography component={'div'} variant="body2">
                     <small> Phone: </small> <TextFieldOutline value={phone} onChange={handleChangePhone} config={{ width: '24ch', }} />
                 </Typography>
-                <div className="icon-save">
-                    {
-                        isFocused &&
-                        <IconButton onClick={handleSaved} className="button-saved">
+                {
+                    <div className="icon-save" >
+                        <button onClick={handleSaved} className="button-saved">
                             <SaveIcon />
-                        </IconButton>
+                        </button>
 
-                    }
-                </div>
+                    </div>
+                }
             </CardContent>
 
 
